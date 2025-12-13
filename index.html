@@ -1,307 +1,332 @@
-<!DOCTYPE html><html lang="en"><head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Business Model Canvas: Soft Aware</title>
-<meta content="A detailed Business Model Canvas for Soft Aware, outlining its strategic management plan." name="description">
-<link href="https://fonts.googleapis.com" rel="preconnect">
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Business Model Canvas: SoftAware</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
         :root {
             --color-background: #f8f9fa;
             --color-block-bg: #ffffff;
-            --color-border: #dee2e6;
+            --color-border: #e9ecef;
             --color-text: #495057;
-            --color-heading: #212529;
-            --color-subheading: #0052CC;
-            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            --border-radius: 8px;
-            --gap: 1rem;
+            --color-heading: #1a1a1a;
+            --color-primary: #0052CC; /* The SoftAware Blue */
+            --color-accent: #28a745;
+            --shadow-sm: 0 2px 4px rgba(0,0,0,0.02);
+            --shadow-md: 0 8px 16px rgba(0,0,0,0.06);
+            --shadow-hover: 0 12px 24px rgba(0, 82, 204, 0.1);
+            --border-radius: 12px;
+            --gap: 1.25rem;
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--color-background);
             color: var(--color-text);
             margin: 0;
             padding: 2rem;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
+        /* HEADER & LOGO STYLES */
         .page-header {
             text-align: center;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid var(--color-border);
-            padding-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #dee2e6;
         }
 
-        .page-header h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--color-heading);
+        .logo-container {
+            font-size: 3rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .logo-soft { color: #333; }
+        .logo-a { color: var(--color-primary); display: inline-block; }
+        .logo-ware { color: #333; }
+
+        .page-header p {
+            font-size: 1.1rem;
+            color: #6c757d;
             margin: 0;
         }
 
-        .page-header p {
-            font-size: 1rem;
-            color: #6c757d;
-            margin-top: 0.5rem;
-        }
-
+        /* GRID LAYOUT */
         .canvas-container {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            grid-template-rows: 1fr auto;
+            grid-template-rows: auto auto auto; /* Explicit rows */
             gap: var(--gap);
-            max-width: 1600px;
+            max-width: 1800px;
             margin: 0 auto;
         }
 
+        /* BLOCK STYLES */
         .bmc-block {
             background-color: var(--color-block-bg);
             border: 1px solid var(--color-border);
             border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            padding: 1.75rem;
             display: flex;
             flex-direction: column;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .bmc-block h2 {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--color-heading);
-            margin-top: 0;
-            margin-bottom: 1rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid #e9ecef;
-            display: flex;
-            align-items: center;
+        /* HOVER EFFECT */
+        .bmc-block:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: #b3d1ff;
         }
-        
-        .bmc-block h2::before {
-            content: '■';
-            margin-right: 0.5rem;
-            color: var(--color-subheading);
-            font-size: 1.2em;
+
+        .bmc-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--color-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .bmc-block:hover::before {
+            opacity: 1;
+        }
+
+        /* TYPOGRAPHY INSIDE BLOCKS */
+        .bmc-block h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #888;
+            margin-top: 0;
+            margin-bottom: 1.25rem;
+            border-bottom: 2px solid #f1f3f5;
+            padding-bottom: 0.75rem;
         }
 
         .bmc-block h3 {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--color-subheading);
-            margin-top: 1rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-top: 1.25rem;
             margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
         }
 
         .bmc-block ul {
             list-style-type: none;
             padding-left: 0;
             margin: 0;
-            flex-grow: 1;
         }
 
         .bmc-block li {
             margin-bottom: 0.75rem;
-            padding-left: 1.2rem;
+            padding-left: 1.25rem;
             position: relative;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+            color: #343a40;
         }
 
         .bmc-block li::before {
             content: '•';
             position: absolute;
             left: 0;
-            color: var(--color-subheading);
+            color: var(--color-primary);
             font-weight: bold;
+            font-size: 1.2em;
+            line-height: 1.2;
         }
         
         .bmc-block li strong {
-            font-weight: 500;
-            color: var(--color-heading);
+            color: #000;
+            font-weight: 600;
         }
 
-        .bmc-col-stack {
-            display: flex;
-            flex-direction: column;
-            gap: var(--gap);
-        }
+        /* GRID POSITIONING */
+        /* Row 1: The Main Canvas */
+        #key-partners { grid-column: 1 / 2; grid-row: 1 / 3; }
+        #key-activities { grid-column: 2 / 3; grid-row: 1 / 2; }
+        #key-resources { grid-column: 2 / 3; grid-row: 2 / 3; }
+        #value-propositions { grid-column: 3 / 4; grid-row: 1 / 3; border-top: 4px solid var(--color-primary); }
+        #customer-relationships { grid-column: 4 / 5; grid-row: 1 / 2; }
+        #channels { grid-column: 4 / 5; grid-row: 2 / 3; }
+        #customer-segments { grid-column: 5 / 6; grid-row: 1 / 3; }
 
-        #cost-structure {
-            grid-column: 1 / 4;
-            grid-row: 2 / 3;
-        }
+        /* Row 2: Finances */
+        #cost-structure { grid-column: 1 / 3; grid-row: 3 / 4; }
+        #revenue-streams { grid-column: 3 / 6; grid-row: 3 / 4; }
 
-        #revenue-streams {
-            grid-column: 4 / 6;
-            grid-row: 2 / 3;
-        }
-        
-        /* Specific block adjustments for classic BMC feel */
-        #value-propositions {
-            border-color: var(--color-subheading);
-            transform: scale(1.02);
-            z-index: 10;
-        }
-
-        /* Responsive layout for smaller screens */
-        @media (max-width: 1200px) {
-            body {
-                padding: 1rem;
-            }
+        /* RESPONSIVE */
+        @media (max-width: 1400px) {
             .canvas-container {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, 1fr);
                 grid-template-rows: auto;
             }
             #key-partners, #key-activities, #key-resources, #value-propositions, #customer-relationships, #channels, #customer-segments, #cost-structure, #revenue-streams {
                 grid-column: auto;
                 grid-row: auto;
             }
-            .bmc-col-stack {
-                gap: 0; /* Remove gap as we stack everything */
-            }
-            .bmc-col-stack .bmc-block {
-                margin-bottom: var(--gap);
-            }
-            .bmc-col-stack .bmc-block:last-child {
-                margin-bottom: 0;
-            }
-            #value-propositions {
-                grid-column: 1 / 3; /* Span full width */
-                order: -1; /* Move to top */
+            #cost-structure, #revenue-streams {
+                grid-column: 1 / -1;
             }
         }
-        
+
         @media (max-width: 768px) {
             .canvas-container {
                 grid-template-columns: 1fr;
             }
-            #value-propositions {
-                grid-column: auto;
-            }
         }
-
-        /* Print-friendly styles */
-        @media print {
-            body {
-                padding: 0;
-                background-color: #fff;
-                color: #000;
-            }
-            .page-header {
-                text-align: left;
-                border-bottom: 2px solid #000;
-            }
-            .canvas-container {
-                display: block;
-            }
-            .bmc-block {
-                box-shadow: none;
-                border: 1px solid #ccc;
-                page-break-inside: avoid;
-                margin-bottom: 1rem;
-            }
-            .bmc-col-stack {
-                display: block;
-            }
-            #value-propositions {
-                transform: none;
-            }
-            a {
-                text-decoration: none;
-                color: inherit;
-            }
+        
+        /* Highlight specific new additions */
+        .new-item {
+            /* Optional: slight highlight to see changes while editing, remove for final */
+            /* background-color: #f0f7ff; */
+            border-radius: 4px;
         }
     </style>
 </head>
-<body class="">
+<body>
+
 <header class="page-header">
-<h1 id="section-1" data-sk-edited="">Business Model Canvas: SoftAware</h1>
-<p>Strategic Overview as of 2025-11-22</p>
+    <div class="logo-container">
+        <span class="logo-soft">Soft</span><span class="logo-a">A</span><span class="logo-ware">ware</span>
+    </div>
+    <p>Strategic Business Model Canvas | Validated Dec 2025</p>
 </header>
+
 <main class="canvas-container">
-<section class="bmc-block" id="key-partners">
-<h2 id="section-1">Key Partners</h2>
-<ul data-sk-edited="">
-<h3 id="section-1-1">Talent Sources (Crucial)</h3>
-<li data-sk-edited=""><strong>ITI (Information Technology Institute)</strong></li>
-<li data-sk-edited=""><strong>NTI (National Telecom Institute)</strong></li>
-<li data-sk-edited=""><strong>DEPI (Digital Egypt Pioneers Initiative)</strong></li><li data-sk-edited=""><strong data-sk-edited="">DECI (Digital Egypt Cubs)</strong></li></ul>
-</section>
-<div class="bmc-col-stack">
-<section class="bmc-block" id="key-activities">
-<h2 id="section-2">Key Activities</h2>
-<ul>
-<li><strong>Quality Assurance:</strong> Implementing rigorous code reviews by Tier 2 Mentors and architectural design oversight by Tier 1 Architects.</li>
-<li><strong>Matchmaking:</strong> Developing and refining the algorithm to assign the right talent tiers to the right project complexity.</li>
-<li><strong>Sales &amp; Marketing:</strong> Actively acquiring projects through direct outreach and partnership channels.</li>
-</ul>
-</section>
-<section class="bmc-block" id="key-resources">
-<h2 id="section-3">Key Resources</h2>
-<ul data-sk-edited="">
-<li><strong>The Platform:</strong> Proprietary automated system for task assignment, project management, and payment processing.</li>
-<li><strong>The Talent Pool:</strong> Curated and vetted database of graduates from ITI, NTI, and DEPI, categorized by performance tiers.</li></ul>
-</section>
-</div>
-<section class="bmc-block" id="value-propositions">
-<h2 id="section-4">Value Propositions</h2>
-<ul>
-<h3 id="section-4-1">For Clients (Demand)</h3>
-<li><strong>Risk-Free Delivery:</strong> We guarantee project completion, eliminating the uncertainty of hiring individual freelancers.</li>
-<li><strong>No Admin Headache:</strong> We manage the entire development team, process, and payroll. Clients focus solely on the outcome.</li>
-<li><strong>Cost Efficiency &amp; Quality:</strong> A superior value proposition offering quality better than gig platforms (e.g., Fiverr) at a price point below traditional software houses.</li>
-<h3 id="section-4-2">For Freelancers (Supply)</h3>
-<li><strong>Payment Safety:</strong> Guaranteed and timely payment for completed work, removing the risk of client ghosting or non-payment.</li>
-<li><strong>Structured Experience:</strong> Juniors gain mentored, real-world portfolio projects. Seniors and Mid-level developers earn income through leadership and mentorship without a full-time coding commitment.</li>
-</ul>
-</section>
-<div class="bmc-col-stack">
-<section class="bmc-block" id="customer-relationships">
-<h2 id="section-5">Customer Relationships</h2>
-<ul>
-<li><strong>Self-Service (Automated):</strong> Standard clients interact through an admin dashboard for project requests, payments, and delivery tracking.</li>
-<li><strong>Dedicated Personal Assistance:</strong> VIP and Enterprise clients receive a dedicated account manager (COO) for personalized oversight and quality assurance.</li>
-<li><strong>Performance-Based Ratings:</strong> A transparent system for ranking freelancers into Tiers 1, 2, and 3 based on performance, ensuring meritocracy and quality.</li>
-</ul>
-</section>
-<section class="bmc-block" id="channels">
-<h2 id="section-6">Channels</h2>
-<ul>
-<li><strong>Direct Sales:</strong> Proactive LinkedIn outreach targeting startup founders and key decision-makers in SMEs.</li>
-<li><strong>Partnerships:</strong> Collaborations with incubators and accelerators (e.g., TIEC, Creativa) to access a pipeline of early-stage startups.</li>
-<li><strong>Talent Pipelines:</strong> Presence at university hackathons and ITI/NTI job fairs to attract and recruit top junior talent.</li>
-</ul>
-</section>
-</div>
-<section class="bmc-block" id="customer-segments">
-<h2 id="section-7">Customer Segments</h2>
-<ul>
-<h3 id="section-7-1">1. The Clients (Demand)</h3>
-<li><strong>Non-technical Founders:</strong> Startups needing a technical partner to build their MVP without hiring a full-time CTO.</li>
-<li data-sk-edited=""><strong data-sk-edited="">SMEs.</strong></li>
-<li><strong>Agencies:</strong> Digital or creative agencies needing to outsource overflow development work reliably.</li>
-<h3 id="section-7-2">2. The Talent (Supply)</h3>
-<li><strong>Tier 1 (Architects):</strong> Senior engineers seeking supplementary income and mentorship roles.</li>
-<li><strong>Tier 2 (Mentors):</strong> Mid-level developers aiming for leadership experience and career growth.</li>
-<li><strong>Tier 3 (Executors):</strong> Fresh graduates (ITI/DEPI) requiring real-world projects to build their portfolios.</li>
-</ul>
-</section>
-<section class="bmc-block" id="cost-structure">
-<h2 id="section-8">Cost Structure</h2>
-<ul>
-<li><strong>Freelancer Payouts:</strong> The largest operational cost, representing 60% of total project revenue paid to the talent pool.</li>
-<li><strong>Platform Development &amp; Maintenance:</strong> Ongoing costs for hosting, domain registration, third-party API subscriptions, and continuous feature development.</li>
-<li><strong>Marketing &amp; Sales:</strong> Expenses related to LinkedIn advertising campaigns, sponsorships for hackathons, and sales team commissions.</li>
-</ul>
-</section>
-<section class="bmc-block" id="revenue-streams">
-<h2 id="section-9">Revenue Streams</h2>
-<ul>
-<li><strong>Project Margin:</strong> A standard 40% mark-up applied to the total cost of freelancer payouts for every project.</li>
-<li><strong>Add-on Services (Future):</strong> Potential future revenue from premium services such as "Express Delivery" fees for expedited timelines or "Long-term Support" monthly retainers.</li>
-</ul>
-</section>
+    
+    <!-- KEY PARTNERS -->
+    <section class="bmc-block" id="key-partners">
+        <h2>Key Partners</h2>
+        <ul>
+            <h3>Talent Pipeline (Supply)</h3>
+            <li><strong>ITI & NTI:</strong> Primary source for vetted Junior/Mid talent.</li>
+            <li><strong>DEPI & DECI:</strong> Digital Egypt initiatives for fresh graduates.</li>
+            
+            <h3>Infrastructure & Payment</h3>
+            <li class="new-item"><strong>Cloud Providers:</strong> AWS / Azure (For hosting client projects).</li>
+            <li class="new-item"><strong>Fawry / Paymob:</strong> Local payment gateways to build trust with Egyptian SMEs.</li>
+            
+            <h3>Client Acquisition (Demand)</h3>
+            <li class="new-item"><strong>ITIDA & Creativa Hubs:</strong> Source for funded startups needing technical execution.</li>
+            <li class="new-item"><strong>Incubators (TIEC):</strong> Funneling non-technical founders to us.</li>
+        </ul>
+    </section>
+    
+    <!-- KEY ACTIVITIES -->
+    <section class="bmc-block" id="key-activities">
+        <h2>Key Activities</h2>
+        <ul>
+            <li><strong>Vetting & QA:</strong> Code reviews (Tier 2) and Architecture (Tier 1).</li>
+            <li><strong>Automated Matchmaking:</strong> Algorithm assigning the right team to the request.</li>
+            <li><strong>Sales & B2B Partnerships:</strong> Closing deals with SMEs/Startups.</li>
+            <li class="new-item"><strong>Lifecycle Management:</strong> Monitoring client growth to upsell features (e.g., scaling servers).</li>
+        </ul>
+    </section>
+
+    <!-- KEY RESOURCES -->
+    <section class="bmc-block" id="key-resources">
+        <h2>Key Resources</h2>
+        <ul>
+            <li><strong>The Platform:</strong> Our proprietary task assignment system.</li>
+            <li><strong>The Talent Pool:</strong> Database of 500+ vetted engineers.</li>
+            <li class="new-item"><strong>Client Intelligence Engine:</strong> Data on client tech stacks used to suggest upgrades (e.g., "You have a web app, do you need a mobile app?").</li>
+            <li class="new-item"><strong>Operational Team:</strong> Support staff and account managers bridging clients and freelancers.</li>
+            <li class="new-item"><strong>Vetting Data:</strong> Historic performance data of freelancers.</li>
+        </ul>
+    </section>
+
+    <!-- VALUE PROPOSITIONS -->
+    <section class="bmc-block" id="value-propositions">
+        <h2>Value Propositions</h2>
+        <ul>
+            <h3>For Clients</h3>
+            <li><strong>Guaranteed Delivery:</strong> "Agency Quality at Freelance Prices."</li>
+            <li><strong>Zero Admin Headache:</strong> We handle the team; you get the product.</li>
+            <li><strong>Trust & Local Payments:</strong> Pay via Fawry/Local Bank, deal with a legal entity.</li>
+            
+            <h3>For Freelancers</h3>
+            <li><strong>Income Security:</strong> Guaranteed payment (no ghosting).</li>
+            <li><strong>Mentorship:</strong> Juniors get reviewed by Seniors.</li>
+            <li><strong>Focus on Code:</strong> No need to do sales or bidding wars.</li>
+        </ul>
+    </section>
+
+    <!-- CUSTOMER RELATIONSHIPS -->
+    <section class="bmc-block" id="customer-relationships">
+        <h2>Customer Relationships</h2>
+        <ul>
+            <li><strong>Automated Dashboard:</strong> For standard requests and tracking.</li>
+            <li><strong>Dedicated Account Manager:</strong> For VIP/Enterprise clients (High touch).</li>
+            <li><strong>Meritocratic System:</strong> Freelancers advance tiers based on code quality, not just "likes."</li>
+        </ul>
+    </section>
+
+    <!-- CHANNELS -->
+    <section class="bmc-block" id="channels">
+        <h2>Channels</h2>
+        <ul>
+            <li><strong>Direct Sales:</strong> LinkedIn outreach to Founders.</li>
+            <li><strong>Partnership Ecosystem:</strong> ITIDA/Creativa events.</li>
+            <li class="new-item"><strong>Referral Program:</strong> Discounts for startups referring other founders.</li>
+            <li><strong>University Hubs:</strong> For recruiting talent.</li>
+        </ul>
+    </section>
+
+    <!-- CUSTOMER SEGMENTS -->
+    <section class="bmc-block" id="customer-segments">
+        <h2>Customer Segments</h2>
+        <ul>
+            <h3>Primary (Demand)</h3>
+            <li><strong>Non-Tech Founders:</strong> Have funding/ideas but no tech team.</li>
+            <li><strong>SMEs:</strong> Traditional businesses digitizing operations.</li>
+            <li><strong>Agencies:</strong> Outsourcing overflow work.</li>
+            
+            <h3>Secondary (Supply)</h3>
+            <li><strong>Software Engineers:</strong> Juniors (Execution), Mids (Review), Seniors (Architecture).</li>
+        </ul>
+    </section>
+
+    <!-- COST STRUCTURE -->
+    <section class="bmc-block" id="cost-structure">
+        <h2>Cost Structure</h2>
+        <ul>
+            <!-- Freelancer Payouts (60%) is treated as Pass-Through, not OpEx -->
+            <li class="new-item"><strong>Core Team & Ops Salaries:</strong> Support team, Sales, and Matchmaking managers.</li>
+            <li><strong>Marketing & CAC:</strong> Ads, event sponsorship, and referral costs.</li>
+            <li><strong>Tech Infrastructure:</strong> Server hosting, domain, and platform maintenance.</li>
+            <li><strong>Legal & Admin:</strong> Licensing and payment gateway fees.</li>
+        </ul>
+    </section>
+
+    <!-- REVENUE STREAMS -->
+    <section class="bmc-block" id="revenue-streams">
+        <h2>Revenue Streams</h2>
+        <ul>
+            <li><strong>Project Margin:</strong> 40% Net Revenue on every development project.</li>
+            <li class="new-item"><strong>Managed Hosting (MRR):</strong> Reselling cloud hosting (AWS/Azure) with a management fee.</li>
+            <li><strong>Deployment Services:</strong> One-time fees for setting up client infrastructure.</li>
+            <li><strong>Priority Support:</strong> Retainers for post-launch maintenance.</li>
+        </ul>
+    </section>
+
 </main>
 
-</body></html>
+</body>
+</html>
